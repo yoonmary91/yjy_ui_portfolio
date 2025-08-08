@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+/* ✅ 별 흐름 효과 */
+@keyframes starScroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000px 1000px;
+  }
+}
+
+.starfield {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 2px 2px;
+  animation: starScroll 80s linear infinite;
+  opacity: 0.07;
+  z-index: 0;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ✅ 글로우 텍스트 */
+.glow-text {
+  text-shadow:
+    0 0 6px rgba(255,255,255,0.8),
+    0 0 12px rgba(138,43,226,0.6),
+    0 0 20px rgba(138,43,226,0.4);
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 6px rgba(255,255,255,0.6),
+      0 0 12px rgba(138,43,226,0.4),
+      0 0 20px rgba(138,43,226,0.2);
+  }
+  50% {
+    text-shadow:
+      0 0 10px rgba(255,255,255,1),
+      0 0 20px rgba(138,43,226,0.8),
+      0 0 30px rgba(138,43,226,0.6);
+  }
+}
+
+/* ✅ 카드 hover 시 글로우 */
+.card-glow {
+  @apply transition-all duration-300 rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 12px rgba(173, 216, 230, 0.3),
+              0 0 24px rgba(138, 43, 226, 0.2);
+  transform: scale(1.015);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.1),
+                0 0 12px rgba(200, 200, 200, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2),
+                0 0 20px rgba(200, 200, 200, 0.25);
+  }
+}
+
+.card-hover-glow {
+  transition: all 0.3s ease;
+}
+
+.card-hover-glow:hover {
+  animation: glowPulse 2s ease-in-out infinite;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ✅ 헤더 링크 hover 시 실버 링 효과 */
+.hover-ring {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-ring:hover {
+  box-shadow: 0 0 6px rgba(220, 220, 220, 0.4);
+}
